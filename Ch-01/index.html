@@ -6,9 +6,19 @@
 <body>
     <div id="content"></div>
     <script type="text/javascript">
-        h1 = React.createElement('h1', null, 'Hello World!')
+        let h1ReactElement = React.createElement(
+            'h1', 
+            null, 
+            'Hello World!'
+        )
+
+        let linkReactElement = React.createElement(
+            'a',
+            {href : 'http://google.com'},
+            'Google'
+        )
         ReactDOM.render(
-            h1, 
+            React.createElement('div', null, h1ReactElement, h1ReactElement, linkReactElement),//a React element and its childs
             document.getElementById('content')
         )
     </script>
