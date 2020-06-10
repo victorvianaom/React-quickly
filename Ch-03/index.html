@@ -7,7 +7,9 @@
 <body>
     <div id="content-1"></div>
     <div id="content-2"></div>
-    <script>
+    <div id="content-3"></div>
+    <script type="text/JavaScript">
+        /** @jsx React.DOM */
         //h1 = React.DOM.h1(null, 'HEY')
         const E = React.createElement
         h1 = E('h1', null, 'test')
@@ -17,7 +19,14 @@
         )
 
         //comparing JavaScript with JSX
-           
+        ReactDOM.render(
+            React.createElement('h1', null, 'Hello!'),
+            document.getElementById('content-2')
+        )
+        ReactDOM.render(
+            <h1>Hello!</h1>,
+            document.getElementById('content-3')
+        )   
     </script>
 </body>
 </html>
