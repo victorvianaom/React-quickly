@@ -11,3 +11,11 @@ ReactDOM.render(React.createElement(
     null,
     'Hello!'
 ), document.getElementById('content-3'));
+
+//storing the React Element made with the JSX syntax in a variable
+let helloWorldReactElement = React.createElement(
+    'h1',
+    null,
+    'Heloooooo'
+);
+ReactDOM.render(helloWorldReactElement, document.getElementById('content-4'));
