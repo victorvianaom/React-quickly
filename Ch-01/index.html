@@ -5,6 +5,7 @@
 </head>
 <body>
     <div id="content"></div>
+    <div id="content-1"></div>
     <script type="text/javascript">
         let h1ReactElement = React.createElement(
             'h1', 
@@ -17,9 +18,38 @@
             {href : 'http://google.com'},
             'Google'
         )
+
+        class HelloWorld extends React.Component {
+            render() {
+                return React.createElement('div', null, h1ReactElement, linkReactElement)
+            }
+        }
         ReactDOM.render(
-            React.createElement('div', null, h1ReactElement, h1ReactElement, linkReactElement),//a React element and its childs
+            React.createElement(HelloWorld, null),
             document.getElementById('content')
+        )
+
+        ReactDOM.render(
+            React.createElement(
+                'div', 
+                {id: 'Hellos'}, 
+                React.createElement(HelloWorld, {
+                    id: 'ember',
+                    frameworkName: 'Ember.js',
+                    title: 'A framework for creating ambitious web applications.'
+                }),
+                React.createElement(HelloWorld, {
+                    id: 'backbone',
+                    frameworkName: 'Backbone.js',
+                    title: 'Backbone.js gives structure to web applications...'
+                }),
+                React.createElement(HelloWorld, {
+                    id: 'angular',
+                    frameworkName: 'Angular.js',
+                    title: 'Superheroic Javascript MVW Framework'
+                }),
+            ),//a React element and its childs
+            document.getElementById('content-1')
         )
     </script>
 </body>
