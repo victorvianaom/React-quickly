@@ -19,13 +19,26 @@
             'Google'
         )
 
-        class HelloWorld extends React.Component {
+        class HelloWorld extends React.Component { //h1
             render() {
-                return React.createElement('div', null, h1ReactElement, linkReactElement)
+                return React.createElement(
+                    'h1', 
+                    null,//with null i'm not passing all the properties to the child heading element 
+                    'Hello ' + this.props.frameworkName + ' World!'
+                )
+            }
+        }
+        class HelloWorldProps extends React.Component { //h1
+            render() {
+                return React.createElement(
+                    'h1', 
+                    this.props,//Passes all the properties to the child heading element 
+                    'Hello ' + this.props.frameworkName + ' World!'
+                )
             }
         }
         ReactDOM.render(
-            React.createElement(HelloWorld, null),
+            h1ReactElement,
             document.getElementById('content')
         )
 
@@ -38,12 +51,12 @@
                     frameworkName: 'Ember.js',
                     title: 'A framework for creating ambitious web applications.'
                 }),
-                React.createElement(HelloWorld, {
+                React.createElement(HelloWorld, {//the keys of this second paramenter are the same as the this.props
                     id: 'backbone',
                     frameworkName: 'Backbone.js',
                     title: 'Backbone.js gives structure to web applications...'
                 }),
-                React.createElement(HelloWorld, {
+                React.createElement(HelloWorldProps, {
                     id: 'angular',
                     frameworkName: 'Angular.js',
                     title: 'Superheroic Javascript MVW Framework'
