@@ -47,7 +47,7 @@ class DateTimeNow1 extends React.Component {
         return React.createElement(
             'span',
             null,
-            `Current date and time is ${dateTimeNow}`
+            (this.props.userName) ? `Welcome ${this.props.userName} Current date and time is ${dateTimeNow}` : `Current date and time is ${dateTimeNow}`
         )
     } 
 }
@@ -65,4 +65,28 @@ class DateTimeNow2 extends React.Component {
 ReactDOM.render(
     <DateTimeNow2/>,
     document.getElementById('content-7')
+)
+
+class HelloWorld3 extends React.Component {
+    render() {
+        return (
+            <div>
+                {helloWorldReactElement}
+                {helloWorldReactElement}
+                {helloWorldReactElement}
+            </div>
+        )
+    }
+}
+ReactDOM.render(
+    <HelloWorld3/>,
+    document.getElementById('content-8')
+)
+
+ReactDOM.render(
+    <div>
+        <a href="https://google.com">Google</a><br/>
+        <DateTimeNow1 userName='Azat'/>
+    </div>,
+    document.getElementById('content-9')
 )

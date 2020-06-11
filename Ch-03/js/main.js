@@ -45,7 +45,7 @@ ReactDOM.render(React.createElement(HelloWorld, null), document.getElementById('
 class DateTimeNow1 extends React.Component {
     render() {
         let dateTimeNow = new Date().toLocaleString();
-        return React.createElement('span', null, `Current date and time is ${dateTimeNow}`);
+        return React.createElement('span', null, this.props.userName ? `Welcome ${this.props.userName} Current date and time is ${dateTimeNow}` : `Current date and time is ${dateTimeNow}`);
     }
 }
 ReactDOM.render(React.createElement(DateTimeNow1, null), document.getElementById('content-6'));
@@ -62,3 +62,28 @@ class DateTimeNow2 extends React.Component {
     }
 }
 ReactDOM.render(React.createElement(DateTimeNow2, null), document.getElementById('content-7'));
+
+class HelloWorld3 extends React.Component {
+    render() {
+        return React.createElement(
+            'div',
+            null,
+            helloWorldReactElement,
+            helloWorldReactElement,
+            helloWorldReactElement
+        );
+    }
+}
+ReactDOM.render(React.createElement(HelloWorld3, null), document.getElementById('content-8'));
+
+ReactDOM.render(React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'a',
+        { href: 'https://google.com' },
+        'Google'
+    ),
+    React.createElement('br', null),
+    React.createElement(DateTimeNow1, { userName: 'Azat' })
+), document.getElementById('content-9'));
