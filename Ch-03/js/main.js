@@ -126,3 +126,27 @@ ReactDOM.render(React.createElement(
     React.createElement(HelloWord4, { id: 'backbone', frameworkName: 'Backbone.js', title: 'Gives struture to web applications' }),
     React.createElement(HelloWord4, { id: 'angular', frameworkName: 'Angular.js', title: 'Superheroic Javascript MVW framework' })
 ), document.getElementById('content-13'));
+
+//methods
+class Content extends React.Component {
+    getUrl() {
+        return 'http://google.com';
+    }
+    render() {
+        return React.createElement(
+            'div',
+            null,
+            React.createElement(
+                'p',
+                null,
+                'Your REST API URL is: ',
+                React.createElement(
+                    'a',
+                    { href: this.getUrl() },
+                    this.getUrl()
+                )
+            )
+        );
+    }
+}
+ReactDOM.render(React.createElement(Content, null), document.getElementById('content-14'));
