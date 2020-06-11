@@ -150,3 +150,10 @@ ReactDOM.render(
     <Content/>,
     document.getElementById('content-14')
 )
+
+//special characters
+var specialCharts = {__html: '&copy;&mdash;&ldquo;'}
+ReactDOM.render(
+    <span dangerourlySetInnetHTML={specialCharts} />,
+    document.getElementById('content-15')
+)

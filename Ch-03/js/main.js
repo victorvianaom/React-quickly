@@ -150,3 +150,7 @@ class Content extends React.Component {
     }
 }
 ReactDOM.render(React.createElement(Content, null), document.getElementById('content-14'));
+
+//special characters
+var specialCharts = { __html: '&copy;&mdash;&ldquo;' };
+ReactDOM.render(React.createElement('span', { dangerourlySetInnetHTML: specialCharts }), document.getElementById('content-15'));
