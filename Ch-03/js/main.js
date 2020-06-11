@@ -151,6 +151,16 @@ class Content extends React.Component {
 }
 ReactDOM.render(React.createElement(Content, null), document.getElementById('content-14'));
 
-//special characters
+//special characters style
 var specialCharts = { __html: '&copy;&mdash;&ldquo;' };
-ReactDOM.render(React.createElement('span', { dangerourlySetInnetHTML: specialCharts }), document.getElementById('content-15'));
+ReactDOM.render(React.createElement(
+    'div',
+    null,
+    React.createElement('span', { dangerourlySetInnetHTML: specialCharts }),
+    React.createElement('br', null),
+    React.createElement(
+        'span',
+        { style: { color: '#f00' } },
+        'texto vermelho'
+    )
+), document.getElementById('content-15'));

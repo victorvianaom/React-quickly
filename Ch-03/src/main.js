@@ -151,9 +151,15 @@ ReactDOM.render(
     document.getElementById('content-14')
 )
 
-//special characters
+//special characters style
 var specialCharts = {__html: '&copy;&mdash;&ldquo;'}
 ReactDOM.render(
-    <span dangerourlySetInnetHTML={specialCharts} />,
+    <div>
+        <span dangerourlySetInnetHTML={specialCharts} />
+        <br />
+        <span style={{color: '#f00'}}>texto vermelho</span>
+    </div>,
     document.getElementById('content-15')
 )
+
+
