@@ -85,5 +85,44 @@ ReactDOM.render(React.createElement(
         'Google'
     ),
     React.createElement('br', null),
-    React.createElement(DateTimeNow1, { userName: 'Azat' })
+    React.createElement(DateTimeNow1, { userName: 'Victor' })
 ), document.getElementById('content-9'));
+
+class ProfileLink extends React.Component {
+    render() {
+        return React.createElement(
+            'a',
+            { href: this.props.url,
+                title: this.props.label,
+                target: '_blank' },
+            'Profile'
+        );
+    }
+}
+ReactDOM.render(React.createElement(ProfileLink, { url: 'https://netflix.com', label: 'Profile for Victor' }), document.getElementById('content-11'));
+
+ReactDOM.render(React.createElement(
+    'li',
+    { 'nada-nao': 'porra nenhuma' },
+    'teste'
+), document.getElementById('content-12'));
+
+//passing all properties
+class HelloWord4 extends React.Component {
+    render() {
+        return React.createElement(
+            'h1',
+            this.props,
+            'Hello ',
+            this.props.frameworkName,
+            ' World!!!'
+        );
+    }
+}
+ReactDOM.render(React.createElement(
+    'div',
+    null,
+    React.createElement(HelloWord4, { id: 'ember', frameworkName: 'Ember.js', title: 'A framework for creating ambitious web applications' }),
+    React.createElement(HelloWord4, { id: 'backbone', frameworkName: 'Backbone.js', title: 'Gives struture to web applications' }),
+    React.createElement(HelloWord4, { id: 'angular', frameworkName: 'Angular.js', title: 'Superheroic Javascript MVW framework' })
+), document.getElementById('content-13'));

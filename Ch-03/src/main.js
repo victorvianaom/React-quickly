@@ -86,7 +86,47 @@ ReactDOM.render(
 ReactDOM.render(
     <div>
         <a href="https://google.com">Google</a><br/>
-        <DateTimeNow1 userName='Azat'/>
+        <DateTimeNow1 userName='Victor'/>
     </div>,
     document.getElementById('content-9')
+)
+
+class ProfileLink extends React.Component {
+    render() {
+        return (
+            <a href={this.props.url}
+            title={this.props.label}
+            target="_blank">
+                Profile
+            </a>
+        )
+    }
+}
+ReactDOM.render(
+    <ProfileLink url="https://netflix.com" label="Profile for Victor"/>,
+    document.getElementById('content-11')
+)
+
+ReactDOM.render(
+    <li nada-nao="porra nenhuma">teste</li>,
+    document.getElementById('content-12')
+)
+
+//passing all properties
+class HelloWord4 extends React.Component {
+    render() {
+        return (
+            <h1 {...this.props}>
+                Hello {this.props.frameworkName} World!!!
+            </h1>
+        )
+    }
+}
+ReactDOM.render(
+    <div>
+        <HelloWord4 id="ember" frameworkName="Ember.js" title="A framework for creating ambitious web applications" />
+        <HelloWord4 id="backbone" frameworkName="Backbone.js" title="Gives struture to web applications" /> 
+        <HelloWord4 id="angular" frameworkName="Angular.js" title="Superheroic Javascript MVW framework" />
+    </div>,
+    document.getElementById('content-13')
 )
