@@ -32,3 +32,11 @@ ReactDOM.render(
     <HelloWorld frameworkName='React'/>,
     document.getElementById('content-2')
 )
+//or use arrow functions
+const HelloWorld2 = (props) => {
+    return <h1 {...props}>Hello {props.frameworkName} World 2 !!!!!!</h1>
+}
+ReactDOM.render(
+    <HelloWorld2 frameworkName="React 2"/>,
+    document.getElementById('content-3')
+)

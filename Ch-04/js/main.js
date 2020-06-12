@@ -36,3 +36,14 @@ const HelloWorld = function (props) {
     );
 };
 ReactDOM.render(React.createElement(HelloWorld, { frameworkName: 'React' }), document.getElementById('content-2'));
+//or use arrow functions
+const HelloWorld2 = props => {
+    return React.createElement(
+        'h1',
+        props,
+        'Hello ',
+        props.frameworkName,
+        ' World 2 !!!!!!'
+    );
+};
+ReactDOM.render(React.createElement(HelloWorld2, { frameworkName: 'React 2' }), document.getElementById('content-3'));
