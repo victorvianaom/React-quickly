@@ -24,3 +24,15 @@ class Clock extends React.Component {
     }
 }
 ReactDOM.render(React.createElement(Clock, null), document.getElementById('content-1'));
+
+//stateless components
+const HelloWorld = function (props) {
+    return React.createElement(
+        'h1',
+        props,
+        'Hello ',
+        props.frameworkName,
+        ' World!!'
+    );
+};
+ReactDOM.render(React.createElement(HelloWorld, { frameworkName: 'React' }), document.getElementById('content-2'));

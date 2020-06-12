@@ -23,3 +23,12 @@ ReactDOM.render(
     <Clock />,
     document.getElementById('content-1')
 )
+
+//stateless components
+const HelloWorld = function(props) {
+    return <h1 {...props}>Hello {props.frameworkName} World!!</h1>
+}
+ReactDOM.render(
+    <HelloWorld frameworkName='React'/>,
+    document.getElementById('content-2')
+)
