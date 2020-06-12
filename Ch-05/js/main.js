@@ -1,7 +1,21 @@
-class Clock extends React.Component {
-    componentDidMount() {//React will call this method when an element of this component class is mounted
-
+class Content extends React.Component {
+    componentDidMount() {
+        console.log('componentDidMount: ', ReactDOM.findDOMNode(this));
     }
 
-    render() {}
+    UNSAFE_componentWillMount() {
+        console.log('componentWillMount: ', ReactDOM.findDOMNode(this));
+    }
+    UNSAFE_componentWillReceiveProps() {}
+    UNSAFE_componentWillUpdate() {}
+    componentWillUnmount() {}
+    shouldComponentUpdate() {}
+    componentDidUpdate() {}
+
+    render() {
+        return React.createElement('div', null);
+    }
 }
+ReactDOM.render(React.createElement(Content, null), document.getElementById('content-1'));
+
+///////////////////////////////
