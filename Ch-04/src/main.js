@@ -26,7 +26,7 @@ ReactDOM.render(
 
 //stateless components
 const HelloWorld = function(props) {
-    return <h1 {...props}>Hello {props.frameworkName} World!!</h1>
+    return <h1 {...props}>Hello {props.frameworkName} World!</h1>
 }
 ReactDOM.render(
     <HelloWorld frameworkName='React'/>,
@@ -34,9 +34,17 @@ ReactDOM.render(
 )
 //or use arrow functions
 const HelloWorld2 = (props) => {
-    return <h1 {...props}>Hello {props.frameworkName} World 2 !!!!!!</h1>
+    return <h1 {...props}>Hello {props.frameworkName} World 2 !!</h1>
 }
 ReactDOM.render(
     <HelloWorld2 frameworkName="React 2"/>,
     document.getElementById('content-3')
 )
+// or ...
+const HelloWorld3 = props => <h1 {...props}>Hello {props.frameworkName} World 3 !!!</h1>
+ReactDOM.render(<HelloWorld3 frameworkName="React 3"/>, document.getElementById('content-4'))
+//or...
+function HelloWorld4(props) {
+    return <h1 {...props}>Hello {props.frameworkName} World 4 !!!!</h1>
+}
+ReactDOM.render(<HelloWorld4 frameworkName="React 4"/>, document.getElementById('content-5'))

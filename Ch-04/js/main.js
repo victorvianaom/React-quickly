@@ -32,7 +32,7 @@ const HelloWorld = function (props) {
         props,
         'Hello ',
         props.frameworkName,
-        ' World!!'
+        ' World!'
     );
 };
 ReactDOM.render(React.createElement(HelloWorld, { frameworkName: 'React' }), document.getElementById('content-2'));
@@ -43,7 +43,27 @@ const HelloWorld2 = props => {
         props,
         'Hello ',
         props.frameworkName,
-        ' World 2 !!!!!!'
+        ' World 2 !!'
     );
 };
 ReactDOM.render(React.createElement(HelloWorld2, { frameworkName: 'React 2' }), document.getElementById('content-3'));
+// or ...
+const HelloWorld3 = props => React.createElement(
+    'h1',
+    props,
+    'Hello ',
+    props.frameworkName,
+    ' World 3 !!!'
+);
+ReactDOM.render(React.createElement(HelloWorld3, { frameworkName: 'React 3' }), document.getElementById('content-4'));
+//or...
+function HelloWorld4(props) {
+    return React.createElement(
+        'h1',
+        props,
+        'Hello ',
+        props.frameworkName,
+        ' World 4 !!!!'
+    );
+}
+ReactDOM.render(React.createElement(HelloWorld4, { frameworkName: 'React 4' }), document.getElementById('content-5'));
