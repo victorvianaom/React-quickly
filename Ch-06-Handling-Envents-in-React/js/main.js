@@ -161,3 +161,17 @@ class Button extends React.Component {
     }
 }
 ReactDOM.render(React.createElement(Button, null), document.getElementById('content-8'));
+
+/// triggering an event from a stateless component
+class ClickCounterButton extends React.Component {
+    render() {
+        return React.createElement(
+            'button',
+            {
+                onClick: this.props.handler },
+            'Increase number (current number is ',
+            this.props.counter,
+            ')'
+        );
+    }
+}

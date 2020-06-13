@@ -149,3 +149,13 @@ ReactDOM.render(
     <Button />,
     document.getElementById('content-8')
 )
+
+/// triggering an event from a stateless component
+class ClickCounterButton extends React.Component {
+    render() {
+        return <button
+            onClick={this.props.handler}>
+            Increase number (current number is {this.props.counter})
+        </button>
+    }
+}
