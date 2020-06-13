@@ -79,18 +79,38 @@ class Mouse2 extends React.Component {
     render() {
         return React.createElement(
             'div',
-            null,
-            React.createElement(
-                'div',
-                {
-                    style: { border: '1px solid red' },
-                    onMouseOver: event => {
-                        console.log('mouse is over with event, showing the SyntheticEvent object passed to this handler');
-                        console.log(event);
-                    } },
-                'Pass the mouse over me, i\'ll show you in the log a SyntheticEvent object ...'
-            )
+            {
+                style: { border: '1px solid red' },
+                onMouseOver: event => {
+                    console.log('mouse is over with event, showing the SyntheticEvent object passed to this handler');
+                    console.log('event: ', event);
+                    console.log('this: ', this); //// there's no need to bind here as i'm using arrow functions
+                } },
+            'Pass the mouse over me, i\'ll show you in the log a SyntheticEvent object ...'
         );
     }
 }
 ReactDOM.render(React.createElement(Mouse2, null), document.getElementById('content-6'));
+
+///accessing events in a asyncronous callback, this ways wont work
+class Mouse3 extends React.Component {
+    handleMouseOver(event) {
+        console.log('inside handleMouseOver, event received: ', event);
+        window.e = event; ////// ANTI-PATTERN
+        console.log(event.target);
+        setTimeout(() => {
+            console.table(event.target);
+            console.table(window.e.target);
+        }, 2500);
+    }
+    render() {
+        return React.createElement(
+            'div',
+            {
+                style: { border: '1px solid red' },
+                onMouseOver: this.handleMouseOver.bind(this) },
+            'come here with the mouse...'
+        );
+    }
+}
+ReactDOM.render(React.createElement(Mouse3, null), document.getElementById('content-7'));
