@@ -95,12 +95,15 @@ ReactDOM.render(React.createElement(Mouse2, null), document.getElementById('cont
 ///accessing events in a asyncronous callback, this ways wont work
 class Mouse3 extends React.Component {
     handleMouseOver(event) {
+        event.persist(); ////THIS WAY THE EVENT CAN BE CALLED ASYNCRONOUSLY
         console.log('inside handleMouseOver, event received: ', event);
         window.e = event; ////// ANTI-PATTERN
-        console.log(event.target);
+        console.log('event.target: ', event.target);
+        console.log('event.currentTarget: ', event.currentTarget);
         setTimeout(() => {
-            console.table(event.target);
-            console.table(window.e.target);
+            ////BY DEFAULT IS NOT POSSIBLE TO USE AN EVENT ON AN ASYNCRONOUS CALLBACK, BUT I SET event.persist(), now it is possible
+            console.table('asyncronously calling event.target', event.target);
+            console.table('asyncronously calling window.e.target', window.e.target);
         }, 2500);
     }
     render() {
