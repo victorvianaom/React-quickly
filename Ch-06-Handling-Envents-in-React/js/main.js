@@ -73,3 +73,24 @@ class Mouse extends React.Component {
     }
 }
 ReactDOM.render(React.createElement(Mouse, null), document.getElementById('content-5'));
+
+//// payinga attention to the SyntheticEvent class passed to the event handler function
+class Mouse2 extends React.Component {
+    render() {
+        return React.createElement(
+            'div',
+            null,
+            React.createElement(
+                'div',
+                {
+                    style: { border: '1px solid red' },
+                    onMouseOver: event => {
+                        console.log('mouse is over with event, showing the SyntheticEvent object passed to this handler');
+                        console.log(event);
+                    } },
+                'Pass the mouse over me, i\'ll show you in the log a SyntheticEvent object ...'
+            )
+        );
+    }
+}
+ReactDOM.render(React.createElement(Mouse2, null), document.getElementById('content-6'));

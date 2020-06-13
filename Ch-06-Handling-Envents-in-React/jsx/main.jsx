@@ -67,3 +67,23 @@ ReactDOM.render(
     <Mouse />,
     document.getElementById('content-5')
 )
+
+//// payinga attention to the SyntheticEvent class passed to the event handler function
+class Mouse2 extends React.Component {
+    render() {
+        return <div>
+            <div
+            style={{border:'1px solid red'}}
+            onMouseOver={(event) => {
+                console.log('mouse is over with event, showing the SyntheticEvent object passed to this handler')
+                console.log(event)
+            }}>
+            Pass the mouse over me, i'll show you in the log a SyntheticEvent object ...
+            </div>
+        </div>
+    }
+}
+ReactDOM.render(
+    <Mouse2 />,
+    document.getElementById('content-6')
+)
