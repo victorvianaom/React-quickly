@@ -154,8 +154,27 @@ ReactDOM.render(
 class ClickCounterButton extends React.Component {
     render() {
         return <button
-            onClick={this.props.handler}>
+            onClick={this.props.handler}>{/**a function can be passed as a property */}
             Increase number (current number is {this.props.counter})
         </button>
     }
 }
+class ContentButton extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handleClick = this.handleClick.bind(this)//bind here or on render()
+        this.state = {counter: 0}
+    }
+    handleClick(event) {
+        this.setState({counter: ++this.state.counter})
+    }
+    render() {
+        return (
+            <ClickCounterButton handler={this.handleClick} counter={this.state.counter}/>
+        )
+    }
+}
+ReactDOM.render(
+    <ContentButton />,
+    document.getElementById('content-9')
+) 
