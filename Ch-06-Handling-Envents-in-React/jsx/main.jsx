@@ -97,7 +97,7 @@ class Mouse3 extends React.Component {
         console.log('event.currentTarget: ', event.currentTarget)
         setTimeout(() => {////BY DEFAULT IS NOT POSSIBLE TO USE AN EVENT ON AN ASYNCRONOUS CALLBACK, BUT I SET event.persist(), now it is possible
             console.table('asyncronously calling event.target', event.target)
-            console.table('asyncronously calling window.e.target', window.e.target)            
+            console.table('asyncronously calling window.e.target', window.e.target)
         }, 2500);
     }
     render() {
@@ -111,4 +111,41 @@ class Mouse3 extends React.Component {
 ReactDOM.render(
     <Mouse3 />,
     document.getElementById('content-7')
+)
+
+/// updating the state as a result of a click action
+class Button extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {counter: 0}
+        this.buttonStyle = {
+            color: 'white',
+            backgroundColor: 'black',
+            width: 300,
+            height: 80
+        }
+    }
+    handleClick(event) {
+        this.setState({counter: ++this.state.counter})//again, setState calls render()
+    }
+
+    render() {
+        return <button
+                style={this.buttonStyle}
+                onClick={this.handleClick.bind(this)}>
+                {
+                (this.state.counter === 0) ?
+                    <span>You haven't clicked me yet!</span>
+                :   ( (this.state.counter === 1) ?
+                    <span>You've clicked me just {this.state.counter} time!</span>
+                    :
+                    <span>You've clicked me {this.state.counter} times!</span>
+                    )
+                }
+               </button>
+    }
+}
+ReactDOM.render(
+    <Button />,
+    document.getElementById('content-8')
 )

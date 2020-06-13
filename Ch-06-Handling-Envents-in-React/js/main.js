@@ -117,3 +117,47 @@ class Mouse3 extends React.Component {
     }
 }
 ReactDOM.render(React.createElement(Mouse3, null), document.getElementById('content-7'));
+
+/// updating the state as a result of a click action
+class Button extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { counter: 0 };
+        this.buttonStyle = {
+            color: 'white',
+            backgroundColor: 'black',
+            width: 300,
+            height: 80
+        };
+    }
+    handleClick(event) {
+        this.setState({ counter: ++this.state.counter }); //again, setState calls render()
+    }
+
+    render() {
+        return React.createElement(
+            'button',
+            {
+                style: this.buttonStyle,
+                onClick: this.handleClick.bind(this) },
+            this.state.counter === 0 ? React.createElement(
+                'span',
+                null,
+                'You haven\'t clicked me yet!'
+            ) : this.state.counter === 1 ? React.createElement(
+                'span',
+                null,
+                'You\'ve clicked me just ',
+                this.state.counter,
+                ' time!'
+            ) : React.createElement(
+                'span',
+                null,
+                'You\'ve clicked me ',
+                this.state.counter,
+                ' times!'
+            )
+        );
+    }
+}
+ReactDOM.render(React.createElement(Button, null), document.getElementById('content-8'));
