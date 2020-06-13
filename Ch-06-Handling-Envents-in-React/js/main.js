@@ -51,3 +51,25 @@ ReactDOM.render(React.createElement(
         } },
     'Passe o mouse aqui e veja no log'
 ), document.getElementById('content-4'));
+
+// Capture vs Bubbling...
+class Mouse extends React.Component {
+    render() {
+        return React.createElement(
+            'div',
+            {
+                style: { border: '1px solid red' },
+                onMouseOver: (event => {
+                    console.log('mouse over on bubbling event');
+                    console.dir(event, this);
+                }).bind(this),
+                onMouseOverCapture: (event => {
+                    //// the CAPTURE evente is logged first
+                    console.log('mouse over on CAPTURE event');
+                    console.dir(event, this);
+                }).bind(this) },
+            'Mouse here, open devTools'
+        );
+    }
+}
+ReactDOM.render(React.createElement(Mouse, null), document.getElementById('content-5'));
