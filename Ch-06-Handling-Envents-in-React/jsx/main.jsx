@@ -226,6 +226,7 @@ ReactDOM.render(
 )
 
 ////responding to DOM events not supported by React
+///the below code didn`t work, i just typed in 
 class Radio extends React.Component {
     constructor(props) {
         super(props)
@@ -273,7 +274,7 @@ class Radio extends React.Component {
                         <div className='radio-outer' style={this.state.outerStyle}>
                             <div className='radio-inner' style={this.state.innerStyle}>
                                 <div className='radio-selected' style={this.state.selectedStyle}>
-
+                                    Teste teste teste
                                 </div>
                             </div>
                         </div>

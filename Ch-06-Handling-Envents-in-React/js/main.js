@@ -239,6 +239,7 @@ class Content2 extends React.Component {
 ReactDOM.render(React.createElement(Content2, null), document.getElementById('content-10'));
 
 ////responding to DOM events not supported by React
+///the below code didn`t work, i just typed in 
 class Radio extends React.Component {
     constructor(props) {
         super(props);
@@ -299,7 +300,11 @@ class Radio extends React.Component {
                         React.createElement(
                             'div',
                             { className: 'radio-inner', style: this.state.innerStyle },
-                            React.createElement('div', { className: 'radio-selected', style: this.state.selectedStyle })
+                            React.createElement(
+                                'div',
+                                { className: 'radio-selected', style: this.state.selectedStyle },
+                                'Teste teste teste'
+                            )
                         )
                     )
                 )
