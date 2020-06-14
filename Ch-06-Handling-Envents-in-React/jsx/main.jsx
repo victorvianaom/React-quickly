@@ -177,4 +177,50 @@ class ContentButton extends React.Component {
 ReactDOM.render(
     <ContentButton />,
     document.getElementById('content-9')
-) 
+)
+
+///Exchanging data between child components
+class ClickCounterButton2 extends React.Component {//child
+    render() {
+        return (
+            <button
+            style={{color: 'white', backgroundColor: 'blue', width: 200, height: 60}}
+            onClick={this.props.handler}>
+                Don't click me!
+            </button>
+        )
+    }
+}
+class Counter2 extends React.Component {//child
+    render() {
+        return (
+            <span>
+                Clicked {this.props.counter} times.
+            </span>
+        )
+    }
+}
+class Content2 extends React.Component {//parent
+    constructor(props) {
+        super(props)
+        this.handleClick = this.handleClick.bind(this)
+        this.state = {counter: 0}
+    }
+    handleClick() {
+        this.setState({counter: ++this.state.counter})
+    }
+
+    render() {
+        return (
+            <div>
+                <ClickCounterButton2 handler={this.handleClick} />
+                <br />
+                <Counter2 counter={this.state.counter} />
+            </div>
+        )
+    }
+}
+ReactDOM.render(
+    <Content2 />,
+    document.getElementById('content-10')
+)
