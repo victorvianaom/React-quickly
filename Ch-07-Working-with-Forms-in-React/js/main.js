@@ -25,7 +25,7 @@ class InputTextChange extends React.Component {
 }
 ReactDOM.render(React.createElement(InputTextChange, null), document.getElementById('div-2'));
 
-// Rendering radio buttons and handling changes
+// Rendering radio buttons, checkbox, textarea, select and handling changes
 class Form1 extends React.Component {
     constructor(props) {
         super(props);
@@ -55,7 +55,7 @@ class Form1 extends React.Component {
         this.setState({ radioGroup: obj });
     }
     handleCheckbox(event) {
-        let obj = Object.assign(this.state.checkboxGroup); // state cannot be changed directly
+        let obj = Object.assign(this.state.checkboxGroup); // state cannot be changed directly, so the need for a helper object
         obj[event.target.value] = event.target.checked;
         this.setState({ checkboxGroup: obj });
     }
@@ -227,3 +227,35 @@ class Form1 extends React.Component {
     }
 }
 ReactDOM.render(React.createElement(Form1, null), document.getElementById('div-3'));
+
+// Account Field Example, this is a controled component as the above.
+class Form2 extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.state = { accountNumber: '' };
+    }
+    handleChange(event) {
+        console.log('Typed: ', event.target.value);
+        this.setState({ accountNumber: event.target.value.replace(/[^0-9]/ig, '') }); //replace (this, for that)
+    }
+    render() {
+        return React.createElement(
+            "div",
+            null,
+            "Account Number:",
+            React.createElement("input", { type: "text",
+                onChange: this.handleChange,
+                placeholder: "123456",
+                value: this.state.accountNumber
+            }),
+            React.createElement("br", null),
+            React.createElement(
+                "span",
+                null,
+                this.state.accountNumber.length > 0 ? 'You entered: ' + this.state.accountNumber : ''
+            )
+        );
+    }
+}
+ReactDOM.render(React.createElement(Form2, null), document.getElementById('div-4'));
