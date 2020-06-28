@@ -41,6 +41,7 @@ class Form1 extends React.Component {
         super(props)
         this.handleRadio = this.handleRadio.bind(this)
         this.handleCheckbox = this.handleCheckbox.bind(this)
+        this.handleDescription = this.handleDescription.bind(this)
         this.state = {
             radioGroup: {
                 angular: false,
@@ -52,7 +53,8 @@ class Form1 extends React.Component {
                 react: true,
                 express: true,
                 mongodb: true
-            }
+            },
+            description: 'text inside the textarea'
         }
     }
     handleRadio(event) {
@@ -61,9 +63,12 @@ class Form1 extends React.Component {
         this.setState({radioGroup: obj})
     }
     handleCheckbox(event) {
-        let obj = Object.assign(this.state.checkboxGroup)
+        let obj = Object.assign(this.state.checkboxGroup)// state cannot be changed directly
         obj[event.target.value] = event.target.checked
         this.setState({checkboxGroup: obj})
+    }
+    handleDescription(event) {
+        this.setState({description: event.target.value})
     }
 
     render() {
@@ -72,48 +77,60 @@ class Form1 extends React.Component {
                 <b>Radio:</b><br />
                 <input  type='radio'
                         name='radioGroup'
+                        id="radio-angular"
                         value='angular'
                         checked={this.state.radioGroup['angular']}
                         onChange={this.handleRadio} 
-                /> Angular <br />
+                /> <label htmlFor="radio-angular">Angular</label><br />
                 <input  type='radio'
                         name='radioGroup'
+                        id="radio-react"
                         value='react'
                         checked={this.state.radioGroup['react']}
                         onChange={this.handleRadio} 
-                /> React <br />
+                /> <label htmlFor="radio-react">React</label> <br />
                 <input  type='radio'
                         name='radioGroup'
+                        id='radio-polymer'
                         value='polymer'
                         checked={this.state.radioGroup['polymer']}
                         onChange={this.handleRadio} 
-                /> Polymer <br />
+                /> <label htmlFor="radio-polymer">Polymer</label> <br />
                 <br />
                 <b>Checkbox:</b><br />
                 <input  type='checkbox'
                         name='checkboxGroup'
+                        id='check-node'
                         value='node'
                         checked={this.state.checkboxGroup['node']}
                         onChange={this.handleCheckbox} 
-                /> Node <br />
+                /> <label htmlFor="check-node">Node</label> <br />
                 <input  type='checkbox'
                         name='checkboxGroup'
+                        id='check-react'
                         value='react'
                         checked={this.state.checkboxGroup['react']}
                         onChange={this.handleCheckbox} 
-                /> React <br />
+                /> <label htmlFor="check-react">React</label> <br />
                 <input  type='checkbox'
                         name='checkboxGroup'
+                        id="check-express"
                         value='express'
                         checked={this.state.checkboxGroup['express']}
                         onChange={this.handleCheckbox} 
-                /> Express <br />
+                /> <label htmlFor="check-express">Express</label> <br />
                 <input  type='checkbox'
                         name='checkboxGroup'
+                        id="check-mongodb"
                         value='mongodb'
                         checked={this.state.checkboxGroup['mongodb']}
                         onChange={this.handleCheckbox} 
-                /> MongoDB <br />
+                /> <label htmlFor="check-mongodb">MongoDB</label> <br />
+                <b>TextArea:</b><br />
+                <textarea   name='description' 
+                            value={this.state.description} 
+                            onChange={this.handleDescription}
+                />
             </form>
         )
     }

@@ -31,6 +31,7 @@ class Form1 extends React.Component {
         super(props);
         this.handleRadio = this.handleRadio.bind(this);
         this.handleCheckbox = this.handleCheckbox.bind(this);
+        this.handleDescription = this.handleDescription.bind(this);
         this.state = {
             radioGroup: {
                 angular: false,
@@ -42,7 +43,8 @@ class Form1 extends React.Component {
                 react: true,
                 express: true,
                 mongodb: true
-            }
+            },
+            description: 'text inside the textarea'
         };
     }
     handleRadio(event) {
@@ -51,9 +53,12 @@ class Form1 extends React.Component {
         this.setState({ radioGroup: obj });
     }
     handleCheckbox(event) {
-        let obj = Object.assign(this.state.checkboxGroup);
+        let obj = Object.assign(this.state.checkboxGroup); // state cannot be changed directly
         obj[event.target.value] = event.target.checked;
         this.setState({ checkboxGroup: obj });
+    }
+    handleDescription(event) {
+        this.setState({ description: event.target.value });
     }
 
     render() {
@@ -68,27 +73,47 @@ class Form1 extends React.Component {
             React.createElement("br", null),
             React.createElement("input", { type: "radio",
                 name: "radioGroup",
+                id: "radio-angular",
                 value: "angular",
                 checked: this.state.radioGroup['angular'],
                 onChange: this.handleRadio
             }),
-            " Angular ",
+            " ",
+            React.createElement(
+                "label",
+                { htmlFor: "radio-angular" },
+                "Angular"
+            ),
             React.createElement("br", null),
             React.createElement("input", { type: "radio",
                 name: "radioGroup",
+                id: "radio-react",
                 value: "react",
                 checked: this.state.radioGroup['react'],
                 onChange: this.handleRadio
             }),
-            " React ",
+            " ",
+            React.createElement(
+                "label",
+                { htmlFor: "radio-react" },
+                "React"
+            ),
+            " ",
             React.createElement("br", null),
             React.createElement("input", { type: "radio",
                 name: "radioGroup",
+                id: "radio-polymer",
                 value: "polymer",
                 checked: this.state.radioGroup['polymer'],
                 onChange: this.handleRadio
             }),
-            " Polymer ",
+            " ",
+            React.createElement(
+                "label",
+                { htmlFor: "radio-polymer" },
+                "Polymer"
+            ),
+            " ",
             React.createElement("br", null),
             React.createElement("br", null),
             React.createElement(
@@ -99,36 +124,74 @@ class Form1 extends React.Component {
             React.createElement("br", null),
             React.createElement("input", { type: "checkbox",
                 name: "checkboxGroup",
+                id: "check-node",
                 value: "node",
                 checked: this.state.checkboxGroup['node'],
                 onChange: this.handleCheckbox
             }),
-            " Node ",
+            " ",
+            React.createElement(
+                "label",
+                { htmlFor: "check-node" },
+                "Node"
+            ),
+            " ",
             React.createElement("br", null),
             React.createElement("input", { type: "checkbox",
                 name: "checkboxGroup",
+                id: "check-react",
                 value: "react",
                 checked: this.state.checkboxGroup['react'],
                 onChange: this.handleCheckbox
             }),
-            " React ",
+            " ",
+            React.createElement(
+                "label",
+                { htmlFor: "check-react" },
+                "React"
+            ),
+            " ",
             React.createElement("br", null),
             React.createElement("input", { type: "checkbox",
                 name: "checkboxGroup",
+                id: "check-express",
                 value: "express",
                 checked: this.state.checkboxGroup['express'],
                 onChange: this.handleCheckbox
             }),
-            " Express ",
+            " ",
+            React.createElement(
+                "label",
+                { htmlFor: "check-express" },
+                "Express"
+            ),
+            " ",
             React.createElement("br", null),
             React.createElement("input", { type: "checkbox",
                 name: "checkboxGroup",
+                id: "check-mongodb",
                 value: "mongodb",
                 checked: this.state.checkboxGroup['mongodb'],
                 onChange: this.handleCheckbox
             }),
-            " MongoDB ",
-            React.createElement("br", null)
+            " ",
+            React.createElement(
+                "label",
+                { htmlFor: "check-mongodb" },
+                "MongoDB"
+            ),
+            " ",
+            React.createElement("br", null),
+            React.createElement(
+                "b",
+                null,
+                "TextArea:"
+            ),
+            React.createElement("br", null),
+            React.createElement("textarea", { name: "description",
+                value: this.state.description,
+                onChange: this.handleDescription
+            })
         );
     }
 }
