@@ -42,6 +42,7 @@ class Form1 extends React.Component {
         this.handleRadio = this.handleRadio.bind(this)
         this.handleCheckbox = this.handleCheckbox.bind(this)
         this.handleDescription = this.handleDescription.bind(this)
+        this.handleBackEndSelect = this.handleBackEndSelect.bind(this)
         this.state = {
             radioGroup: {
                 angular: false,
@@ -54,7 +55,8 @@ class Form1 extends React.Component {
                 express: true,
                 mongodb: true
             },
-            description: 'text inside the textarea'
+            description: 'text inside the textarea',
+            selectedBackEndValue: 'node'
         }
     }
     handleRadio(event) {
@@ -69,6 +71,9 @@ class Form1 extends React.Component {
     }
     handleDescription(event) {
         this.setState({description: event.target.value})
+    }
+    handleBackEndSelect(event){
+        this.setState({selectedBackEndValue: event.target.value})
     }
 
     render() {
@@ -97,6 +102,8 @@ class Form1 extends React.Component {
                         onChange={this.handleRadio} 
                 /> <label htmlFor="radio-polymer">Polymer</label> <br />
                 <br />
+
+
                 <b>Checkbox:</b><br />
                 <input  type='checkbox'
                         name='checkboxGroup'
@@ -126,11 +133,20 @@ class Form1 extends React.Component {
                         checked={this.state.checkboxGroup['mongodb']}
                         onChange={this.handleCheckbox} 
                 /> <label htmlFor="check-mongodb">MongoDB</label> <br />
+
+
                 <b>TextArea:</b><br />
                 <textarea   name='description' 
                             value={this.state.description} 
                             onChange={this.handleDescription}
-                />
+                /><br />
+
+                <b>Select and Option:</b><br />
+                <select value={this.state.selectedBackEndValue} onChange={this.handleBackEndSelect}>
+                    <option value='ruby'>Ruby</option>
+                    <option value='node'>Node</option>
+                    <option value='python'>Python</option>
+                </select>
             </form>
         )
     }

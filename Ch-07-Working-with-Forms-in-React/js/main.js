@@ -32,6 +32,7 @@ class Form1 extends React.Component {
         this.handleRadio = this.handleRadio.bind(this);
         this.handleCheckbox = this.handleCheckbox.bind(this);
         this.handleDescription = this.handleDescription.bind(this);
+        this.handleBackEndSelect = this.handleBackEndSelect.bind(this);
         this.state = {
             radioGroup: {
                 angular: false,
@@ -44,7 +45,8 @@ class Form1 extends React.Component {
                 express: true,
                 mongodb: true
             },
-            description: 'text inside the textarea'
+            description: 'text inside the textarea',
+            selectedBackEndValue: 'node'
         };
     }
     handleRadio(event) {
@@ -59,6 +61,9 @@ class Form1 extends React.Component {
     }
     handleDescription(event) {
         this.setState({ description: event.target.value });
+    }
+    handleBackEndSelect(event) {
+        this.setState({ selectedBackEndValue: event.target.value });
     }
 
     render() {
@@ -191,7 +196,33 @@ class Form1 extends React.Component {
             React.createElement("textarea", { name: "description",
                 value: this.state.description,
                 onChange: this.handleDescription
-            })
+            }),
+            React.createElement("br", null),
+            React.createElement(
+                "b",
+                null,
+                "Select and Option:"
+            ),
+            React.createElement("br", null),
+            React.createElement(
+                "select",
+                { value: this.state.selectedBackEndValue, onChange: this.handleBackEndSelect },
+                React.createElement(
+                    "option",
+                    { value: "ruby" },
+                    "Ruby"
+                ),
+                React.createElement(
+                    "option",
+                    { value: "node" },
+                    "Node"
+                ),
+                React.createElement(
+                    "option",
+                    { value: "python" },
+                    "Python"
+                )
+            )
         );
     }
 }
