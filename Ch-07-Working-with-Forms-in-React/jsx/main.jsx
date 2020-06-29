@@ -188,3 +188,19 @@ ReactDOM.render(
     <Form2 />,
     document.getElementById('div-4')
 )
+
+// Uncontrolled Component, anti-pattern
+class Uncontrolled extends React.Component {
+    render() {
+        return(
+            <div>
+                <b>Uncontrolled Component:</b>
+                <input type="text" />
+            </div>
+        )
+    }
+}
+ReactDOM.render(
+    <Uncontrolled />,
+    document.getElementById('div-5')
+)

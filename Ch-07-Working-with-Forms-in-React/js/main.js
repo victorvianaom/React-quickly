@@ -259,3 +259,20 @@ class Form2 extends React.Component {
     }
 }
 ReactDOM.render(React.createElement(Form2, null), document.getElementById('div-4'));
+
+// Uncontrolled Component, anti-pattern
+class Uncontrolled extends React.Component {
+    render() {
+        return React.createElement(
+            "div",
+            null,
+            React.createElement(
+                "b",
+                null,
+                "Uncontrolled Component:"
+            ),
+            React.createElement("input", { type: "text" })
+        );
+    }
+}
+ReactDOM.render(React.createElement(Uncontrolled, null), document.getElementById('div-5'));
