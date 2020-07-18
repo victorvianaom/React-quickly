@@ -10,7 +10,7 @@
 05. ✅ React component lifecycle events
 06. ✅ Handling events in React
 07. ✅ Working with forms in React
-08. ■ Scaling React components
+08. ✅ Scaling React components
 09. ■ Project: Menu component
 10. ■ Project: Tooltip component
 11. ■ Project: Timer component
