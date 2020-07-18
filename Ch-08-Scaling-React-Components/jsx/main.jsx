@@ -1,14 +1,5 @@
-// defaultProps
-/*class DatePicker extends React.Component {
-
-}
-DatePicker.defaultProps = {
-    currentDate: Date(),
-    rows: 4,
-    locale: 'US'
-}*/
-
 // defaultProps on a button example
+console.log("got into main.js")
 class Button extends React.Component {
     render() {
         return <button>{this.props.buttonLabel}</button>
